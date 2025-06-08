@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Beloved XinXin</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Noto+Sans+SC:wght@300;400&family=Noto+Sans+JP:wght@300;400&family=Noto+Sans+Thai:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #87CEEB 0%, #4682B4 50%, #1E90FF 100%);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .background-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .floating-text {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: 300;
+            color: white;
+            animation: float 15s infinite linear;
+            white-space: nowrap;
+        }
+        
+        .thai { font-family: 'Prompt'; }
+        .chinese { font-family: 'Noto Sans SC', sans-serif; }
+        .spanish { font-family: 'Dancing Script', cursive; }
+        .japanese { font-family: 'Noto Sans JP', sans-serif; }
+        
+        @keyframes float {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100vw); }
+        }
+        
+        .main-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .heart {
+            font-size: 4rem;
+            color: #FF69B4;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin-bottom: 2rem;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .love-languages {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .language-item:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .language-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            color: #ff6b9d;
+            font-weight: 700;
+        }
+        
+        .love-text {
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 400;
+        }
+        
+        .message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: white;
+            margin-top: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            line-height: 1.4;
+        }
+        
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .star {
+            position: absolute;
+            color: white;
+            animation: twinkle 2s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .letter-container {
+            margin-top: 2rem;
+            position: relative;
+        }
+        
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(45deg, #E0F6FF, #B0E0E6);
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(135, 206, 235, 0.4);
+            border: 3px solid #87CEEB;
+        }
+        
+        .envelope:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(135, 206, 235, 0.6);
+        }
+        
+        .envelope-front {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            border: 2px solid #4682B4;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .envelope-seal {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+            filter: drop-shadow(0 4px 8px rgba(135, 206, 235, 0.5));
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .envelope-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: #1E90FF;
+            text-align: center;
+            padding: 0 1rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .passcode-modal,
+        .signature-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #87CEEB 0%, #4682B4 100%);
+            padding: 2.5rem;
+            border-radius: 25px;
+            text-align: center;
+            border: 3px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .modal-content h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-content p {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .modal-content input {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            width: 250px;
+            text-align: center;
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .modal-content button {
+            padding: 15px 35px;
+            background: linear-gradient(45deg, #FF69B4, #FF1493);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+        
+        .modal-content button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
+        }
+        
+        .error-message {
+            color: #ff4757;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        
+        .letter-content {
+            display: none;
+            max-width: 700px;
+            margin: 2rem auto;
+            animation: fadeInUp 1s ease;
+            padding: 0 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .letter-paper {
+            background: linear-gradient(145deg, #F0F8FF, #E6F3FF);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(135, 206, 235, 0.3);
+            border: 2px solid #87CEEB;
+            line-height: 1.8;
+            font-family: 'Georgia', serif;
+            position: relative;
+        }
+        
+        .letter-paper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #87CEEB, #4682B4, #1E90FF);
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .letter-header {
+            border-bottom: 3px solid #87CEEB;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, rgba(135, 206, 235, 0.1), transparent);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        
+        .date {
+            text-align: right;
+            color: #4682B4;
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .to {
+            font-size: 1.4rem;
+            color: #1E90FF;
+            font-weight: bold;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .letter-body p {
+            margin-bottom: 1.8rem;
+            color: #2F4F4F;
+            text-align: justify;
+            font-size: 1.1rem;
+            text-indent: 2rem;
+        }
+        
+        .letter-footer {
+            border-top: 2px solid #87CEEB;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            background: linear-gradient(90deg, transparent, rgba(135, 206, 235, 0.1));
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
+        }
+        
+        .signature-line {
+            margin-bottom: 1.5rem;
+            color: #4682B4;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .signature-canvas-display {
+            margin: 1rem 0;
+            border: 2px solid #87CEEB;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(135, 206, 235, 0.3);
+        }
+        
+        .love-signature {
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #FF69B4;
+            margin-top: 1rem;
+        }
+        
+        .signature-content {
+            width: 500px;
+        }
+        
+        .canvas-container {
+            margin: 1.5rem 0;
+            border: 3px solid white;
+            border-radius: 15px;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(135, 206, 235, 0.3);
+        }
+        
+        #signatureCanvas {
+            border: 2px dashed #87CEEB;
+            border-radius: 10px;
+            cursor: crosshair;
+            background: #FAFFFE;
+        }
+        
+        .signature-controls {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .clear-btn {
+            background: linear-gradient(45deg, #FF6B6B, #FF4757) !important;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4) !important;
+        }
+        
+        .clear-btn:hover {
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6) !important;
+        }
+        
+        .open-btn {
+            background: linear-gradient(45deg, #2ECC71, #27AE60) !important;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4) !important;
+        }
+        
+        .open-btn:hover {
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-text">
+        <div class="floating-text thai" style="top: 10%; animation-delay: 0s;">รักนะเบบี๋</div>
+        <div class="floating-text chinese" style="top: 25%; animation-delay: 3s;">我爱你 XinXin</div>
+        <div class="floating-text spanish" style="top: 40%; animation-delay: 6s;">Te amo XinXin</div>
+        <div class="floating-text japanese" style="top: 55%; animation-delay: 9s;">愛してる XinXin</div>
+        <div class="floating-text thai" style="top: 70%; animation-delay: 12s;">เลิฟยุ</div>
+        <div class="floating-text chinese" style="top: 85%; animation-delay: 15s;">我爱你 XinXin</div>
+    </div>
+    
+    <div class="stars"></div>
+    
+    <div class="main-content">
+        <div class="heart">💖</div>
+        <h1 style="font-family: Prompt;">ก๊อกๆๆ มีจดหมายมาส่งคับบ</h1>
+        
+        <div class="letter-container">
+            <div class="envelope" id="envelope">
+                <div class="envelope-front">
+                    <div class="envelope-seal">💌</div>
+                    <div class="envelope-text" style="font-family: Prompt;">จดหมายจากม๋าน้อยของ<br>ซินซินคับ</div>
+                </div>
+            </div>
+            
+            <div class="passcode-modal" id="passcodeModal">
+                <div class="modal-content">
+                    <h3>🔐 Enter the Secret Code</h3>
+                    <input type="number" id="passcodeInput" placeholder="รหัสลับจะเป็นอะไยน้าา" maxlength="8">
+                    <button onclick="checkPasscode()">Unlock</button>
+                    <div id="passcodeError" class="error-message"></div>
+                </div>
+            </div>
+            
+            <div class="signature-modal" id="signatureModal">
+                <div class="modal-content signature-content">
+                    <h3>✍️ Sign Your Name</h3>
+                    <p>Please draw your signature below</p>
+                    <div class="canvas-container">
+                        <canvas id="signatureCanvas" width="400" height="150"></canvas>
+                    </div>
+                    <div class="signature-controls">
+                        <button onclick="clearSignature()" class="clear-btn">Clear</button>
+                        <button onclick="openLetter()" class="open-btn">Open Letter</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="letter-content" id="letterContent">
+                <div class="letter-paper">
+                    <div class="letter-header">
+                        <div class="date">ม๋าน้อยเขียนจดหมายวันที่ วันที่ 8 เดือนที่แย้ว</div>
+                        <div class="to">To my lover XinXin</div>
+                    </div>
+                    <div class="letter-body">
+                        <p>Happy aniversay 1 ปี 5 เดือนคับบ</p>
+                        
+                        <p>รักนะเบบี๋ รักหนูมากๆเลย รู้มั้ยวันที่ม๋าเขียนจดหมายนี้เป็นวันที่บี๋บอกเราคุยกันน้อย เพราะม๋าเขียนจดหมายนี้นี่แหละ ขอโทษนะที่ไม่ได้บอกเลย แต่เค้าอยากเก็บเป็นเซอร์ไพรส์แบบวันนี้ แต่วันนั้นเราก็โทรคาสายไว้ยาวเลยนะะ เพราะบิบี๋บอกม๋าว่าคิดว่าม๋าไม่ชอบให้บี๋โทร เค้าเลยโทรค้างไว้เลย89374589738</p>
+                        
+                        <p>อยู่ด้วยกันนานๆเลยนะคะเบบี๋ ไว้โตๆไปเที่ยวฟูจิกันนะ แบบที่บี๋เคยส่งคลิปมาไงงถ้าจำไม่ได้ว่าคลิปไหนมันคือ<a href="https://vt.tiktok.com/ZSkAH5eQ2">คลิปนี้</a></p>
+                        
+                        <p>โตๆทำหนมให้เค้ากินด้วยนะ ชอบหนมที่บี๋ทำ จริงๆก็ไม่ใช่แค่หนมแหละ ทุกอย่างที่บี๋ตั้งใจทำให้เค้าเลย รักนะเบบี๋</p>
+                    </div>
+                    <div class="letter-footer">
+                        <div class="signature-line">
+                            <span>Signed by: <span id="finalSignature"></span></span>
+                        </div>
+                        <div class="love-signature">With all my love ❤️</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Create twinkling stars
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            const starCount = 50;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.innerHTML = '✨';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                star.style.fontSize = (Math.random() * 0.5 + 0.5) + 'rem';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Add floating hearts occasionally
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💕';
+            heart.style.position = 'absolute';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = '100%';
+            heart.style.fontSize = '2rem';
+            heart.style.zIndex = '5';
+            heart.style.animation = 'float-up 4s linear forwards';
+            heart.style.pointerEvents = 'none';
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float-up {
+                    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                document.body.removeChild(heart);
+            }, 4000);
+        }
+        
+        createStars();
+        
+        // Create floating hearts every 3 seconds
+        setInterval(createFloatingHeart, 3000);
+        
+        // Letter functionality
+        document.getElementById('envelope').addEventListener('click', function() {
+            document.getElementById('passcodeModal').style.display = 'flex';
+        });
+        
+        function checkPasscode() {
+            const input = document.getElementById('passcodeInput').value;
+            const correctPasscode = '11102552';
+            
+            if (input === correctPasscode) {
+                document.getElementById('passcodeModal').style.display = 'none';
+                document.getElementById('signatureModal').style.display = 'flex';
+            } else {
+                document.getElementById('passcodeError').textContent = 'รหัสผิดงั้บเบบี๋';
+            }
+        }
+        
+        function openLetter() {
+            const signature = document.getElementById('signatureInput').value.trim();
+            
+            if (signature) {
+                document.getElementById('signatureModal').style.display = 'none';
+                document.getElementById('envelope').style.display = 'none';
+                document.getElementById('letterContent').style.display = 'block';
+                document.getElementById('finalSignature').textContent = signature;
+            } else {
+                alert('Please sign your name first! 💕');
+            }
+        }
+        
+        // Canvas signature functionality
+        let canvas = null;
+        let ctx = null;
+        let isDrawing = false;
+        let hasSignature = false;
+        
+        function initCanvas() {
+            canvas = document.getElementById('signatureCanvas');
+            ctx = canvas.getContext('2d');
+            
+            // Set canvas background to white
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Set drawing style
+            ctx.strokeStyle = '#2c3e50';
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            
+            // Mouse events
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+            
+            // Touch events for mobile
+            canvas.addEventListener('touchstart', handleTouch);
+            canvas.addEventListener('touchmove', handleTouch);
+            canvas.addEventListener('touchend', stopDrawing);
+        }
+        
+        function startDrawing(e) {
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            ctx.beginPath();
+            ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+        }
+        
+        function draw(e) {
+            if (!isDrawing) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+            ctx.stroke();
+            hasSignature = true;
+        }
+        
+        function stopDrawing() {
+            isDrawing = false;
+        }
+        
+        function handleTouch(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : 
+                                            e.type === 'touchmove' ? 'mousemove' : 'mouseup', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }
+        
+        function clearSignature() {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            hasSignature = false;
+        }
+        
+        // Modified openLetter function
+        function openLetter() {
+            if (hasSignature) {
+                // Convert canvas to image
+                const signatureImage = canvas.toDataURL();
+                
+                document.getElementById('signatureModal').style.display = 'none';
+                document.getElementById('envelope').style.display = 'none';
+                document.getElementById('letterContent').style.display = 'block';
+                
+                // Add signature image to letter
+                const signatureContainer = document.getElementById('finalSignature');
+                signatureContainer.innerHTML = `<img src="${signatureImage}" style="max-width: 200px; height: auto; border: 1px solid #ddd; border-radius: 5px;" alt="Signature">`;
+            } else {
+                alert('Please draw your signature first! 💕');
+            }
+        }
+        
+        // Initialize canvas when signature modal is shown
+        document.getElementById('envelope').addEventListener('click', function() {
+            document.getElementById('passcodeModal').style.display = 'flex';
+        });
+        
+        // Initialize canvas when passcode is correct
+        function checkPasscode() {
+            const input = document.getElementById('passcodeInput').value;
+            const correctPasscode = '11102552';
+            
+            if (input === correctPasscode) {
+                document.getElementById('passcodeModal').style.display = 'none';
+                document.getElementById('signatureModal').style.display = 'flex';
+                // Initialize canvas after modal is shown
+                setTimeout(initCanvas, 100);
+            } else {
+                document.getElementById('passcodeError').textContent = 'รหัสผิดงั้บเบบี๋';
+            }
+        }
+        
+        // Allow Enter key for inputs
+        document.getElementById('passcodeInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPasscode();
+            }
+        });
+        
+        document.getElementById('signatureInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                openLetter();
+            }
+        });
+    </script>
+</body>
+</html>
